@@ -2,6 +2,9 @@
 node_modules/
 unpackage/
 dist/
+uniCloud-aliyun
+uniCloud-tcb
+src/uni_modules
 
 # local env files
 .env.local
@@ -21,3 +24,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+.hbuilderx
