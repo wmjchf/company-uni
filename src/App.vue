@@ -4,6 +4,14 @@ export default Vue.extend({
   mpType: "app",
   onLaunch() {
     console.log("App Launch");
+    // @ts-ignore
+    vk.userCenter.getCurrentUserInfo({
+      // @ts-ignore
+      success: function (data) {
+        // 成功后的逻辑
+        console.log(data);
+      },
+    });
   },
   onShow() {
     console.log("App Show");
