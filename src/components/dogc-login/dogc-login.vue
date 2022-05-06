@@ -19,17 +19,27 @@ export default class DogcLogin extends Vue {
     console.log();
   }
   async login() {
-    const setting = await getSetting({ withSubscriptions: false });
-    if (setting.authSetting["scope.userInfo"]) {
-      try {
-        const userInfo = await getWXUserInfo({ desc: "用户用户信息完善" });
-        console.log(userInfo);
-        const loginInfo = await login({ provider: "weixin" });
-        console.log(loginInfo);
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    // @ts-ignore
+    this.vk.userCenter.loginByWeixin({
+      data: {},
+      // @ts-ignore
+      success: function (data) {
+        // 成功后的逻辑
+        console.log(data);
+      },
+    });
+    // this.vk.toast("提示内容");
+    // const setting = await getSetting({ withSubscriptions: false });
+    // if (setting.authSetting["scope.userInfo"]) {
+    //   try {
+    //     const userInfo = await getWXUserInfo({ desc: "用户用户信息完善" });
+    //     console.log(userInfo);
+    //     const loginInfo = await login({ provider: "weixin" });
+    //     console.log(loginInfo);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
   }
 }
 </script>

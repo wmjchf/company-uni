@@ -3,9 +3,20 @@ import Vue from "vue";
 import uView from "uview-ui";
 import App from "./App.vue";
 
+// @ts-ignore
+import vk from "./uni_modules/vk-unicloud";
+
 Vue.config.productionTip = false;
 
 Vue.use(uView);
+Vue.use(vk);
+console.log(vk);
+// 初始化 vk框架
+// Vue.prototype.vk.init({
+//   Vue, // Vue实例           // 配置
+// });
+
+// 初始化 vk框架
 // @ts-ignore
 uni.$u.setConfig({
   // 修改$u.config对象的属性
