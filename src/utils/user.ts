@@ -36,3 +36,41 @@ export const getUserInfo: IGetUserInfo = (options) => {
     });
   });
 };
+
+type IGetWXUserInfo = (
+  options: Omit<UniApp.GetUserProfileOptions, "success" | "complete" | "fail">
+) => Promise<UniApp.GetUserProfileRes>;
+export const getWXUserInfo: IGetWXUserInfo = (options) => {
+  return new Promise((resovle, reject) => {
+    uni.getUserProfile({
+      ...options,
+      success: (result) => {
+        resovle(result);
+      },
+      fail: (error) => {
+        reject(error);
+      },
+      complete: (date) => {
+        resovle(date);
+      },
+    });
+  });
+};
+
+type ILogin = (options: UniApp.LoginOptions) => Promise<UniApp.LoginRes>;
+export const login: ILogin = (options) => {
+  return new Promise((resovle, reject) => {
+    uni.login({
+      ...options,
+      success: (result) => {
+        resovle(result);
+      },
+      fail: (error) => {
+        reject(error);
+      },
+      complete: (date) => {
+        resovle(date);
+      },
+    });
+  });
+};

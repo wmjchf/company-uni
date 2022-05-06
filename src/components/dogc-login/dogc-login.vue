@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { getSetting, getUserInfo } from "@/utils";
+import { getSetting, getUserInfo, getWXUserInfo, login } from "@/utils";
 
 @Component({
   // @ts-ignore
@@ -21,8 +21,14 @@ export default class DogcLogin extends Vue {
   async login() {
     const setting = await getSetting({ withSubscriptions: false });
     if (setting.authSetting["scope.userInfo"]) {
-      const userInfo = await getUserInfo({ provider: "weixin" });
-      console.log(userInfo);
+      try {
+        const userInfo = await getWXUserInfo({ desc: "用户用户信息完善" });
+        console.log(userInfo);
+        const loginInfo = await login({ provider: "weixin" });
+        console.log(loginInfo);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 }
