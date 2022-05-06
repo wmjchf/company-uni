@@ -12,6 +12,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 
+// import NavPng from '@/assets'
+
 @Component({
   // @ts-ignore
   options: {
@@ -27,11 +29,17 @@ export default class DogcNav extends Vue {
   statusBarHeight = "0px";
 
   titleBarHeight = "0px";
+
+  backgroundHeight = "0px";
   mounted() {
     const systemInfo = uni.getSystemInfoSync();
-    console.log(systemInfo);
     this.statusBarHeight = systemInfo.statusBarHeight + "px";
     this.titleBarHeight = systemInfo.system.includes("iOS") ? "40px" : "48px";
+    this.backgroundHeight =
+      (systemInfo.statusBarHeight || 0) +
+      (systemInfo.system.includes("iOS") ? 40 : 48) +
+      "px";
+    console.log(this.backgroundHeight, "sss");
   }
 }
 </script>
@@ -39,9 +47,16 @@ export default class DogcNav extends Vue {
 <style lang="scss" scoped>
 @import "@/styles/mixin.scss";
 .dogc-nav {
+  position: relative;
+  .dogc-nav-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+  }
   .dogc-nav-title {
     width: 100vw;
-    background: green;
     @include flex(row, center, center);
     text {
       font-size: 14px;
