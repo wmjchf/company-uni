@@ -1,15 +1,6 @@
 {
   "pages": [
     {
-      "path": "pages/splash/index",
-      "style": {
-        "navigationStyle": "custom",
-        "mp-qq": {
-          "usingComponents": true
-        }
-      }
-    },
-    {
       "path": "pages/home/index",
       "style": {
         "navigationStyle": "custom",

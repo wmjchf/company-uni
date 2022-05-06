@@ -1,19 +1,13 @@
-# wang-ui
+# dogc-uni
 
-## Project setup
-```
-yarn install
-```
+1、微信小程序`::v-deep`不生效。
 
-### Compiles and hot-reloads for development
 ```
-yarn serve
+@Component({
+  // @ts-ignore
+  options: {
+    styleIsolation: "shared",
+  },
+})
+export default class DogcLogin extends Vue {}
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
