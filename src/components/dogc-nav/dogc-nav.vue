@@ -24,7 +24,7 @@ export default class DogcNav extends Vue {
   @Prop({
     type: String,
   })
-  title: string = "";
+  title!: string;
 
   statusBarHeight = "0px";
 
@@ -39,7 +39,6 @@ export default class DogcNav extends Vue {
       (systemInfo.statusBarHeight || 0) +
       (systemInfo.system.includes("iOS") ? 40 : 48) +
       "px";
-    console.log(this.backgroundHeight, "sss");
   }
 }
 </script>
@@ -48,13 +47,8 @@ export default class DogcNav extends Vue {
 @import "@/styles/mixin.scss";
 .dogc-nav {
   position: relative;
-  .dogc-nav-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-  }
+  background: #fff;
+
   .dogc-nav-title {
     width: 100vw;
     @include flex(row, center, center);

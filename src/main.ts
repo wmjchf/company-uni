@@ -1,16 +1,18 @@
 import Vue from "vue";
+import store from "./store";
 // @ts-ignore
 import uView from "uview-ui";
+
 import App from "./App.vue";
 
 // @ts-ignore
-import vk from "./uni_modules/vk-unicloud";
+// import vk from "./uni_modules/vk-unicloud";
 
 Vue.config.productionTip = false;
 
 Vue.use(uView);
-Vue.use(vk);
-console.log(vk);
+// Vue.use(vk);
+
 // 初始化 vk框架
 // Vue.prototype.vk.init({
 //   Vue, // Vue实例           // 配置
@@ -34,5 +36,12 @@ uni.$u.setConfig({
     // ......
   },
 });
+// @ts-ignore
+App.mpType = "app";
 
-new App().$mount();
+const app = new Vue({
+  store,
+  ...App,
+});
+
+app.$mount();
