@@ -8,6 +8,15 @@
           "usingComponents": true
         }
       }
+    },
+    {
+      "path": "pages/memory/index",
+      "style": {
+        "navigationStyle": "custom",
+        "mp-qq": {
+          "usingComponents": true
+        }
+      }
     }
   ],
   "easycom": {
@@ -17,5 +26,17 @@
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#ffffff"
+  },
+
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/home/index"
+      },
+      {
+        "pagePath": "pages/memory/index"
+      }
+    ]
   }
 }

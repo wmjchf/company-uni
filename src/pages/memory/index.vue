@@ -1,7 +1,7 @@
 <template>
   <view class="home">
     <u-navbar title="记录美好周末" :placeholder="true"> </u-navbar>
-    <home-desc></home-desc>
+    <text>回忆录</text>
     <u-tabbar
       :value="tabIndex"
       @change="changeTabbar"
@@ -10,12 +10,8 @@
       :border="false"
       :safeAreaInsetBottom="true"
     >
-      <u-tabbar-item text="记录" icon="photo"></u-tabbar-item>
-      <u-tabbar-item
-        text="回忆"
-        icon="play-right"
-        @click="toMemory"
-      ></u-tabbar-item>
+      <u-tabbar-item text="记录" icon="photo" @click="toHome"></u-tabbar-item>
+      <u-tabbar-item text="回忆" icon="play-right"></u-tabbar-item>
     </u-tabbar>
   </view>
 </template>
@@ -25,16 +21,15 @@ import { Vue, Component } from "vue-property-decorator";
 import { State, Mutation, Getter } from "vuex-class";
 import DogcLogin from "@/components/dogc-login/dogc-login.vue";
 import DogcNav from "@/components/dogc-nav/dogc-nav.vue";
-import HomeDesc from "./components/home-desc/home-desc.vue";
 import { ProfileState } from "@/store/profile/types";
 
 const namespace: string = "profile";
 
 // @ts-ignore
 @Component({
-  components: { DogcLogin, DogcNav, HomeDesc },
+  components: { DogcLogin, DogcNav },
 })
-export default class HomePage extends Vue {
+export default class MemoryPage extends Vue {
   @State("version") version!: string;
 
   @State("tabIndex") tabIndex!: number;
@@ -49,8 +44,6 @@ export default class HomePage extends Vue {
 
   @State("profile") private profile!: ProfileState;
 
-  private title = "HOME";
-
   mounted() {
     // this.fetchData();
   }
@@ -62,9 +55,9 @@ export default class HomePage extends Vue {
     this.changeTab(index);
   }
 
-  toMemory() {
+  toHome() {
     uni.switchTab({
-      url: "/pages/memory/index",
+      url: "/pages/home/index",
     });
   }
 }
