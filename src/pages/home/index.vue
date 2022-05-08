@@ -1,7 +1,7 @@
 <template>
   <view class="home">
     <u-navbar title="记录美好周末" :placeholder="true"> </u-navbar>
-    <home-desc></home-desc>
+
     <u-tabbar
       :value="tabIndex"
       @change="changeTabbar"
