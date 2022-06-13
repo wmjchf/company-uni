@@ -30,6 +30,7 @@
 
   "tabBar": {
     "custom": true,
+    "display": "none",
     "list": [
       {
         "pagePath": "pages/home/index"
@@ -37,6 +38,7 @@
       {
         "pagePath": "pages/memory/index"
       }
-    ]
+    ],
+    "current": 0
   }
 }

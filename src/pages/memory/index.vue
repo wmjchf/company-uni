@@ -1,6 +1,6 @@
 <template>
-  <view class="home">
-    <u-navbar title="记录美好周末" :placeholder="true"> </u-navbar>
+  <view class="memory">
+    <u-navbar title="你是我妈妈" :placeholder="true"> </u-navbar>
 
     <u-tabbar
       :value="tabIndex"
@@ -19,15 +19,14 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { State, Mutation, Getter } from "vuex-class";
-import DogcLogin from "@/components/dogc-login/dogc-login.vue";
-import DogcNav from "@/components/dogc-nav/dogc-nav.vue";
+
 import { ProfileState } from "@/store/profile/types";
 
 const namespace: string = "profile";
 
 // @ts-ignore
 @Component({
-  components: { DogcLogin, DogcNav },
+  components: {},
 })
 export default class MemoryPage extends Vue {
   @State("version") version!: string;
@@ -65,7 +64,7 @@ export default class MemoryPage extends Vue {
 
 <style lang="scss" scoped>
 @import "@/styles/mixin.scss";
-.home {
+.memory {
   width: 100vw;
   height: 100vh;
   background: rgba(95, 167, 251, 0.1);

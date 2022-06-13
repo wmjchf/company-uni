@@ -1,7 +1,7 @@
 <template>
   <view class="home">
-    <u-navbar title="记录美好周末" :placeholder="true"> </u-navbar>
-
+    <u-navbar title="我是你爸爸" :placeholder="true"> </u-navbar>
+    <view class="home-body"> body </view>
     <u-tabbar
       :value="tabIndex"
       @change="changeTabbar"
@@ -23,16 +23,16 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { State, Mutation, Getter } from "vuex-class";
-import DogcLogin from "@/components/dogc-login/dogc-login.vue";
-import DogcNav from "@/components/dogc-nav/dogc-nav.vue";
 import HomeDesc from "./components/home-desc/home-desc.vue";
 import { ProfileState } from "@/store/profile/types";
+
+import { GetTopPlaylist } from "@/api/module/common/dict";
 
 const namespace: string = "profile";
 
 // @ts-ignore
 @Component({
-  components: { DogcLogin, DogcNav, HomeDesc },
+  components: { HomeDesc },
 })
 export default class HomePage extends Vue {
   @State("version") version!: string;
@@ -51,8 +51,14 @@ export default class HomePage extends Vue {
 
   private title = "HOME";
 
+  async getTopPlayList() {
+    const res = await GetTopPlaylist({ params: { cat: "华语" } });
+    console.log(res);
+  }
+
   mounted() {
     // this.fetchData();
+    this.getTopPlayList();
   }
   updated() {
     // console.log(this.profileState, "update");
@@ -81,6 +87,9 @@ export default class HomePage extends Vue {
     .u-navbar__content__left {
       display: none;
     }
+  }
+  &-body {
+    width: 100%;
   }
 }
 </style>
